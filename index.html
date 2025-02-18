@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buatan Neev Keren Anjay</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ca1319, #fad0c4, #1075d4, #fbc2eb, #a18cd1, #fbc2eb);
+            transition: background 1s;
+            background-size: 300% 300%;
+            animation: gradientAnimation 6s infinite alternate;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        button {
+            font-size: 16px;
+            padding: 12px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        #noBtn { background-color: #690d0d; color: #fff; }
+        #noBtn:hover { background-color: #c21010; transform: scale(1.05); }
+        #yesBtn { background-color: #a0e7e5; color: #333; }
+        #yesBtn:hover { background-color: #76d7d2; transform: scale(1.05); }
+        #btn1, #btn2 { background-color: #b4d4ff; color: #333; }
+        #btn1:hover, #btn2:hover { background-color: #92bfff; transform: scale(1.05); }
+        #backBtn { background-color: #d3d3d3; color: #333; }
+        #backBtn:hover { background-color: #b0b0b0; transform: scale(1.05); }
+        .container {
+            text-align: center;
+        }
+        .watermark {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: rgba(2, 20, 6, 0.6);
+            font-size: larger;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="container"></div>
+    <div class="watermark" >By Hanif keren anjay</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const app = document.getElementById("app");
+            app.innerHTML = `
+                <h2>Aku mau nanya, kamu mau tau aku pengen nanya apa atau ga?</h2>
+                <button id="noBtn" style="position: absolute; left: 50px; top: 150px;">Gamau</button>
+                <button id="yesBtn">Iya, apa tuh?</button>
+            `;
+
+            const noBtn = document.getElementById("noBtn");
+            const yesBtn = document.getElementById("yesBtn");
+
+            noBtn.addEventListener("mouseover", () => {
+                const x = Math.random() * (window.innerWidth - 100);
+                const y = Math.random() * (window.innerHeight - 50);
+                noBtn.style.left = `${x}px`;
+                noBtn.style.top = `${y}px`;
+            });
+
+            yesBtn.addEventListener("click", () => {
+                nextPage();
+            });
+        });
+
+        function nextPage() {
+            const app = document.getElementById("app");
+            app.innerHTML = `
+                <h2>Pencet salah satu ini aja ya, semoga ga salah pilih</h2>
+                <button id="btn1">ini</button>
+                <button id="btn2">ini</button>
+            `;
+
+            document.getElementById("btn1").addEventListener("click", () => {
+                finalPage();
+            });
+
+            document.getElementById("btn2").addEventListener("click", () => {
+                trapPage();
+            });
+        }
+
+        function trapPage() {
+            const app = document.getElementById("app");
+            app.innerHTML = `
+                <h2>Anjay!</h2>
+                <img src="hantu-placeholder.jpg" alt="Hantu" />
+                <br>
+                <button id="backBtn">Kembali</button>
+            `;
+            
+            document.getElementById("backBtn").addEventListener("click", () => {
+                nextPage();
+            });
+        }
+
+        function finalPage() {
+            const app = document.getElementById("app");
+            app.innerHTML = `
+                <div class="container">
+                    <h2>Kamu lebih suka makan makanan yang kamu suka tapi yang masaknya gabisa masak dan gaenak, apa makan makanan yang ga kamu suka tapi yang masak jago dan enak?</h2>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
